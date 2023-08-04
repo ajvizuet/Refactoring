@@ -26,18 +26,19 @@ public class GameManagment {
 				setChoice(player2);
 				System.out.println(player1 + "    vs    " + player2);
 				
-				Player winner = SelectWinner.getWinner(player1, player2);
-				if(winner == player1) {
+				Choice winner = getWinnerChoice(player1, player2);
+				if(winner == player1.getChoice()) {
 					
 					System.out.println("Round "+round +" Winner -> " +player1.getUsername()+"\n");
-				}else if(winner == player2) {
+				}else if(winner == player2.getChoice()) {
 					System.out.println("Round "+round +" Winner -> " +player2.getUsername()+"\n");			
 				}else {
 					System.out.println("tie"+"\n");
 				}
 				round++;
 			}
-			SelectWinner.showWinner(player1, player2);
+			Player win = showWinner(player1, player2);
+			System.out.print(win);
 			
 		}
 		private void setChoice(Player player1) {
@@ -47,7 +48,14 @@ public class GameManagment {
 			int indexRandom = random.nextInt(keys.length);
 			player1.setChoice(diccionario.get(keys[indexRandom]));
 		}
-	
-		
+		private Player showWinner(Player p1, Player p2) {
+			if(p1.victories > p2.victories) {
+				return p1;
+			}
+			return p2;
+		}
+		private Choice getWinnerChoice(Player p1, Player p2) {
+			return player1.getChoice().getWinner(player2.getChoice());
+		}
 		
 }

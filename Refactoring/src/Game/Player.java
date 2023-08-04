@@ -12,6 +12,9 @@ public class Player {
 	public void setChoice(AbstractChoice c) {
 		choice = c;
 	}
+	public Choice getChoice() {
+		return choice;
+	}
 
 	public int getPriority() {
 		return choice.value;

@@ -2,7 +2,14 @@ package Game;
 
 public class Scissor extends AbstractChoice {
 	public Scissor() {
-		value = 1;
 		name = "Scissor";
+	}
+
+	@Override
+	public Choice getWinner(Choice c) {
+		if(c instanceof Rock) {
+			return c;
+		}
+		return this;
 	}
 }
